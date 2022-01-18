@@ -17,13 +17,17 @@ def stock_picker(week)
     sell = new_week.max
   end
 
-  until new_week.index(buy) < new_week.index(sell)
+  while new_week.index(buy) > new_week.index(sell) do
     new_week.delete(buy)
     buy = new_week.min
   end
 
-  buy_and_sell = [week.index(buy), week.index(sell)]
-  p buy_and_sell
+  if [week.index(buy), week.index(sell)] == [1,1]
+    p "Not a good week to buy."
+  else
+    buy_and_sell = [week.index(buy), week.index(sell)]
+    p buy_and_sell
+  end
 
 end
 
